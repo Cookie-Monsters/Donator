@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.donate_activity_button_donate).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent amountChooserIntent = new Intent(MainActivity.this, AmountChooser.class);
+                Intent amountChooserIntent = new Intent(MainActivity.this, AmountChooserActivity.class);
                 startActivity(amountChooserIntent);
             }
         });

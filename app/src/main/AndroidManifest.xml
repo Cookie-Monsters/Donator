@@ -23,7 +23,7 @@
         </activity>
 
         <activity
-            android:name=".AmountChooser"
+            android:name=".AmountChooserActivity"
             android:screenOrientation="portrait" />
 
         <activity

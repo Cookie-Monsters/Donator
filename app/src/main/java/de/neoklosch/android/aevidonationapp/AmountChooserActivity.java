@@ -13,7 +13,7 @@ import com.aevi.payment.TransactionStatus;
 import java.math.BigDecimal;
 import java.util.Currency;
 
-public class AmountChooser extends AppCompatActivity {
+public class AmountChooserActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +33,7 @@ public class AmountChooser extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         TransactionResult result = TransactionResult.fromIntent(data);
         if (result.getTransactionStatus() == TransactionStatus.APPROVED) {
-            Intent successIntent = new Intent(AmountChooser.this, SuccessActivity.class);
+            Intent successIntent = new Intent(AmountChooserActivity.this, SuccessActivity.class);
             startActivity(successIntent);
         } else {
             Toast.makeText(this, "An Error occurred", Toast.LENGTH_SHORT).show();
