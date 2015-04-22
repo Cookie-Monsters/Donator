@@ -25,6 +25,11 @@
         <activity
             android:name=".AmountChooser"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".SettingsActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>
