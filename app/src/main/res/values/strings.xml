@@ -13,4 +13,6 @@
 
     <string name="donate_activity_button_donate">donate</string>
 
+    <string name="amount_chooser_activity_headline">Donation:</string>
+
 </resources>
