@@ -1,4 +1,4 @@
-package de.neoklosch.android.aevidonationapp;
+package de.neoklosch.android.aevidonationapp.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,8 @@ import com.aevi.payment.TransactionStatus;
 
 import java.math.BigDecimal;
 import java.util.Currency;
+
+import de.neoklosch.android.aevidonationapp.R;
 
 public class AmountChooserActivity extends AppCompatActivity {
     @Override

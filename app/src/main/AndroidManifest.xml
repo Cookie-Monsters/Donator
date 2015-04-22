@@ -12,7 +12,7 @@
         android:name=".AeviDonateionAppApplication"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -23,15 +23,15 @@
         </activity>
 
         <activity
-            android:name=".AmountChooserActivity"
+            android:name=".activities.AmountChooserActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".SettingsActivity"
+            android:name=".activities.SettingsActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".SuccessActivity"
+            android:name=".activities.SuccessActivity"
             android:screenOrientation="portrait" />
 
     </application>
