@@ -226,7 +226,7 @@ public final class SharedPreferencesHelper {
      *            the preference's value
      */
     @SuppressWarnings("unused")
-    public static void putBooleanDefault(final Context context, final String key, final boolean value) {
+    public static void putBooleanInitial(final Context context, final String key, final boolean value) {
         if(key == null) {
             throw new NullPointerException(NULL_KEY_EXCEPTION_TEXT);
         }
@@ -267,7 +267,7 @@ public final class SharedPreferencesHelper {
      *            the preference's value
      */
     @SuppressWarnings("unused")
-    public static void putFloatDefault(final Context context, final String key, final float value) {
+    public static void putFloatInitial(final Context context, final String key, final float value) {
         if(key == null) {
             throw new NullPointerException(NULL_KEY_EXCEPTION_TEXT);
         }
@@ -310,7 +310,7 @@ public final class SharedPreferencesHelper {
      *            the preference's value
      */
     @SuppressWarnings("unused")
-    public static void putIntDefault(final Context context, final String key, final int value) {
+    public static void putIntInitial(final Context context, final String key, final int value) {
         if(key == null) {
             throw new NullPointerException(NULL_KEY_EXCEPTION_TEXT);
         }
@@ -352,7 +352,7 @@ public final class SharedPreferencesHelper {
      *            the preference's value
      */
     @SuppressWarnings("unused")
-    public static void putLongDefault(final Context context, final String key, final long value) {
+    public static void putLongInitial(final Context context, final String key, final long value) {
         if(key == null) {
             throw new NullPointerException(NULL_KEY_EXCEPTION_TEXT);
         }
@@ -393,7 +393,7 @@ public final class SharedPreferencesHelper {
      *            the preference's value
      */
     @SuppressWarnings("unused")
-    public static void putStringDefault(final Context context, final String key, final String value) {
+    public static void putStringInitial(final Context context, final String key, final String value) {
         if (!SharedPreferencesHelper.contains(context, key)) {
             SharedPreferencesHelper.putString(context, key, value);
         }
@@ -429,7 +429,7 @@ public final class SharedPreferencesHelper {
      * @param values
      *            the preference's value
      */
-    public static void putStringSetDefault(final Context context, final String key, final Set<String> values) {
+    public static void putStringSetInitial(final Context context, final String key, final Set<String> values) {
         if (!SharedPreferencesHelper.contains(context, key)) {
             SharedPreferencesHelper.putStringSet(context, key, values);
         }
