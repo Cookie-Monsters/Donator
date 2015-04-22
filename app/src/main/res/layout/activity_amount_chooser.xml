@@ -1,26 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:validation="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/amount_chooser_activity_headline" />
-
-    <EditText
-        android:id="@+id/amount_chooser_activity_value"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:ems="10"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/amount_chooser_activity_button_done"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/amount_chooser_activity_headline" />
+
+        <com.wrapp.floatlabelededittext.FloatLabeledEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.andreabaccega.widget.FormEditText
+                validation:testType="numeric"
+                validation:emptyErrorString="@string/error_wrong_default_amount"
+                android:id="@+id/amount_chooser_activity_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/amount_chooser_activity_amount_hint" />
+
+        </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
+        <Button
+            android:id="@+id/amount_chooser_activity_button_done"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/amount_chooser_activity_button_send_donation"/>
+
+    </LinearLayout>
 
 </RelativeLayout>

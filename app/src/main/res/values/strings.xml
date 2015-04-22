@@ -14,6 +14,8 @@
     <string name="donate_activity_button_donate">donate</string>
 
     <string name="amount_chooser_activity_headline">Donation:</string>
+    <string name="amount_chooser_activity_amount_hint">The Amount of your donation; eg. 10€</string>
+    <string name="amount_chooser_activity_button_send_donation">send donation</string>
 
     <string name="success_activity_success_message">Thank You\nfor your donation</string>
     <string name="success_activity_button_finish">Make another donation</string>
