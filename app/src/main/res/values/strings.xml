@@ -15,4 +15,7 @@
 
     <string name="amount_chooser_activity_headline">Donation:</string>
 
+    <string name="success_activity_success_message">Thank You\nfor your donation</string>
+    <string name="success_activity_button_finish">Make another donation</string>
+
 </resources>

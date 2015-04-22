@@ -33,7 +33,8 @@ public class AmountChooser extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         TransactionResult result = TransactionResult.fromIntent(data);
         if (result.getTransactionStatus() == TransactionStatus.APPROVED) {
-            Toast.makeText(this, "Transaction result: " + result.getTransactionStatus(), Toast.LENGTH_SHORT).show();
+            Intent successIntent = new Intent(AmountChooser.this, SuccessActivity.class);
+            startActivity(successIntent);
         } else {
             Toast.makeText(this, "An Error occurred", Toast.LENGTH_SHORT).show();
         }
