@@ -2,7 +2,6 @@ package de.neoklosch.android.aevidonationapp.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
@@ -15,7 +14,7 @@ import java.util.Currency;
 
 import de.neoklosch.android.aevidonationapp.R;
 
-public class AmountChooserActivity extends AppCompatActivity {
+public class AmountChooserActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

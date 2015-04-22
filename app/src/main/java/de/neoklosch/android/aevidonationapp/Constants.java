@@ -6,4 +6,6 @@ public final class Constants {
     }
 
     public final static String SHARED_PREFERENCES_FILE = "aevi-donation-app-shared-preferences";
+
+    public final static String SHARED_PREFERENCES_KEY_SETUP_DONE = "SHARED_PREFERENCES_KEY_SETUP_DONE";
 }

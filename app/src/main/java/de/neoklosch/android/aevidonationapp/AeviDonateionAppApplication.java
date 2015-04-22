@@ -19,5 +19,6 @@ public class AeviDonateionAppApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        SharedPreferencesHelper.putBooleanDefault(this, Constants.SHARED_PREFERENCES_KEY_SETUP_DONE, false);
     }
 }

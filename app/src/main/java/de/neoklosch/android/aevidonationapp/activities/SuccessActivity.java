@@ -4,12 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import de.neoklosch.android.aevidonationapp.R;
 
-public class SuccessActivity extends AppCompatActivity {
+public class SuccessActivity extends BaseActivity {
     final Handler handler = new Handler();
     final Runnable runnable = new Runnable() {
         @Override
