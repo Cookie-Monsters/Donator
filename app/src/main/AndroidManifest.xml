@@ -4,6 +4,7 @@
 
     <uses-permission android:name="com.aevi.permission.CONFIGURATION" />
     <uses-permission android:name="com.aevi.permission.PAYMENT_REQUEST" />
+    <uses-permission android:name="com.aevi.permission.AUTHENTICATION_REQUEST" />
 
     <application
         android:allowBackup="true"

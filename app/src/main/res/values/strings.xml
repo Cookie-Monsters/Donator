@@ -18,4 +18,6 @@
     <string name="success_activity_success_message">Thank You\nfor your donation</string>
     <string name="success_activity_button_finish">Make another donation</string>
 
+    <string name="error_no_permission">You have not the permission to enter the settings</string>
+
 </resources>

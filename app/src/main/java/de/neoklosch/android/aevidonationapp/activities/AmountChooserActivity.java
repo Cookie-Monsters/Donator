@@ -12,6 +12,7 @@ import com.aevi.payment.TransactionStatus;
 import java.math.BigDecimal;
 import java.util.Currency;
 
+import de.neoklosch.android.aevidonationapp.Constants;
 import de.neoklosch.android.aevidonationapp.R;
 
 public class AmountChooserActivity extends BaseActivity {
@@ -25,19 +26,23 @@ public class AmountChooserActivity extends BaseActivity {
             public void onClick(View view) {
                 PaymentRequest payment = new PaymentRequest(new BigDecimal("20.00"));
                 payment.setCurrency(Currency.getInstance("EUR"));
-                startActivityForResult(payment.createIntent(), 0);
+                startActivityForResult(payment.createIntent(), Constants.PAYMENT_REQUEST_CODE);
             }
         });
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        TransactionResult result = TransactionResult.fromIntent(data);
-        if (result.getTransactionStatus() == TransactionStatus.APPROVED) {
-            Intent successIntent = new Intent(AmountChooserActivity.this, SuccessActivity.class);
-            startActivity(successIntent);
+        if (requestCode == Constants.PAYMENT_REQUEST_CODE) {
+            TransactionResult result = TransactionResult.fromIntent(data);
+            if (result.getTransactionStatus() == TransactionStatus.APPROVED) {
+                Intent successIntent = new Intent(AmountChooserActivity.this, SuccessActivity.class);
+                startActivity(successIntent);
+            } else {
+                Toast.makeText(this, "An Error occurred", Toast.LENGTH_SHORT).show();
+            }
         } else {
-            Toast.makeText(this, "An Error occurred", Toast.LENGTH_SHORT).show();
+            super.onActivityResult(requestCode, resultCode, data);
         }
     }
 }
