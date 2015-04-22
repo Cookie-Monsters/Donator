@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:validation="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -12,39 +13,47 @@
         android:id="@+id/headline"
         android:layout_gravity="center_horizontal" />
 
-    <EditText
-        android:id="@+id/charity_name"
+    <com.wrapp.floatlabelededittext.FloatLabeledEditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/charity_name_hint"/>
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/charity_description_hint" />
+        <com.andreabaccega.widget.FormEditText
+            validation:testType="alphaNumeric"
+            validation:emptyErrorString="@string/error_can_not_be_empty"
+            android:id="@+id/charity_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/charity_name_hint"/>
 
-    <EditText
-        android:id="@+id/default_amount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/charity_default_amount" />
+    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
 
-    <EditText
-        android:id="@+id/password"
+    <com.wrapp.floatlabelededittext.FloatLabeledEditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:hint="@string/charity_settings_password"
-        android:ems="10" />
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/password_repeat"
+        <com.andreabaccega.widget.FormEditText
+            validation:testType="alphaNumeric"
+            validation:emptyErrorString="@string/error_can_not_be_empty"
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/charity_description_hint" />
+
+    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
+    <com.wrapp.floatlabelededittext.FloatLabeledEditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:hint="@string/charity_settings_password_repeat"
-        android:ems="10" />
+        android:layout_height="wrap_content">
+
+        <com.andreabaccega.widget.FormEditText
+            validation:testType="numeric"
+            validation:emptyErrorString="@string/error_wrong_default_amount"
+            android:id="@+id/default_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/charity_default_amount" />
+
+    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
 
     <Button
         android:id="@+id/save_button"
