@@ -5,7 +5,9 @@
     <string name="action_settings">Settings</string>
 
     <string name="charity_name_hint">the name of your charity event</string>
+    <string name="charity_name_default">Welcome,</string>
     <string name="charity_description_hint">short description of your charity event</string>
+    <string name="charity_description_default">to our charity event.\nThank your for donating.</string>
     <string name="charity_default_amount">default amount for the donations, eg: 10€</string>
     <string name="charity_settings_save_button">save</string>
 
