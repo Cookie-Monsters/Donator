@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.aevi.payment.PaymentRequest;
@@ -21,6 +22,14 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        findViewById(R.id.donate_activity_button_donate).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PaymentRequest payment = new PaymentRequest(new BigDecimal("20.00"));
+                payment.setCurrency(Currency.getInstance("EUR"));
+                startActivityForResult(payment.createIntent(), 0);
+            }
+        });
     }
 
 
@@ -44,12 +53,6 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void onButtonClick(View view) {
-        PaymentRequest payment = new PaymentRequest(new BigDecimal("20.00"));
-        payment.setCurrency(Currency.getInstance("EUR"));
-        startActivityForResult(payment.createIntent(), 0);
     }
 
     @Override

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AeviDonationApp</string>
+    <string name="app_name">Aevi Donation App</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -10,4 +10,7 @@
     <string name="charity_settings_password">password to enter the settings screen</string>
     <string name="charity_settings_password_repeat">repeat your password</string>
     <string name="charity_settings_save_button">save</string>
+
+    <string name="donate_activity_button_donate">donate</string>
+
 </resources>
