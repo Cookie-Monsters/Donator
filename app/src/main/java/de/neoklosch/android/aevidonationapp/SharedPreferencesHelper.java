@@ -5,12 +5,16 @@ import android.content.SharedPreferences;
 
 import java.util.Collections;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Class {@link SharedPreferencesHelper} is a wrapper for the shared preferences.
  */
 @SuppressWarnings("unused")
 public final class SharedPreferencesHelper {
+    private final static String NULL_KEY_EXCEPTION_TEXT = "Null keys are not permitted";
+    private final static String NULL_LISTENER_EXCEPTION_TEXT = "Listener with value null are not permitted";
+
     /**
      * Wraps {@link android.content.SharedPreferences.OnSharedPreferenceChangeListener#onSharedPreferenceChanged(SharedPreferences, String)}
      *
@@ -211,6 +215,27 @@ public final class SharedPreferencesHelper {
     }
 
     /**
+     * Wrapper around {@link android.content.SharedPreferences.Editor#putBoolean} method.
+     * Only set the value if the key does not exists in the preferences file.
+     *
+     * @param context
+     *            the context the SharedPreferences belong to
+     * @param key
+     *            the preference's key, must not be {@code null}
+     * @param value
+     *            the preference's value
+     */
+    @SuppressWarnings("unused")
+    public static void putBooleanDefault(final Context context, final String key, final boolean value) {
+        if(key == null) {
+            throw new NullPointerException(NULL_KEY_EXCEPTION_TEXT);
+        }
+        if (!SharedPreferencesHelper.contains(context, key)) {
+            SharedPreferencesHelper.putBoolean(context, key, value);
+        }
+    }
+
+    /**
      * Wrapper around {@link android.content.SharedPreferences.Editor} {@code putFloat()} methods.
      *
      * @param context
@@ -228,6 +253,29 @@ public final class SharedPreferencesHelper {
         SharedPreferences.Editor editor = getPreferences(context).edit();
         editor.putFloat(key, value);
         editor.apply();
+    }
+
+    /**
+     * Wrapper around {@link android.content.SharedPreferences.Editor#putFloat} method.
+     * Only set the value if the key does not exists in the preferences file.
+     *
+     * @param context
+     *            the context the SharedPreferences belong to
+     * @param key
+     *            the preference's key, must not be {@code null}
+     * @param value
+     *            the preference's value
+     */
+    @SuppressWarnings("unused")
+    public static void putFloatDefault(final Context context, final String key, final float value) {
+        if(key == null) {
+            throw new NullPointerException(NULL_KEY_EXCEPTION_TEXT);
+        }
+        if (!SharedPreferencesHelper.contains(context, key)) {
+            if (!SharedPreferencesHelper.contains(context, key)) {
+                SharedPreferencesHelper.putFloat(context, key, value);
+            }
+        }
     }
 
     /**
@@ -251,6 +299,28 @@ public final class SharedPreferencesHelper {
     }
 
     /**
+     * Wrapper around {@link android.content.SharedPreferences.Editor#putInt} method.
+     * Only set the value if the key does not exists in the preferences file.
+     *
+     * @param context
+     *            the context the SharedPreferences belong to
+     * @param key
+     *            the preference's key, must not be {@code null}
+     * @param value
+     *            the preference's value
+     */
+    @SuppressWarnings("unused")
+    public static void putIntDefault(final Context context, final String key, final int value) {
+        if(key == null) {
+            throw new NullPointerException(NULL_KEY_EXCEPTION_TEXT);
+        }
+        if (!SharedPreferencesHelper.contains(context, key)) {
+            SharedPreferencesHelper.putInt(context, key, value);
+        }
+    }
+
+
+    /**
      * Wrapper around {@link android.content.SharedPreferences.Editor} {@code putLong()} methods.
      *
      * @param context
@@ -271,6 +341,27 @@ public final class SharedPreferencesHelper {
     }
 
     /**
+     * Wrapper around {@link android.content.SharedPreferences.Editor#putLong} method.
+     * Only set the value if the key does not exists in the preferences file.
+     *
+     * @param context
+     *            the context the SharedPreferences belong to
+     * @param key
+     *            the preference's key, must not be {@code null}
+     * @param value
+     *            the preference's value
+     */
+    @SuppressWarnings("unused")
+    public static void putLongDefault(final Context context, final String key, final long value) {
+        if(key == null) {
+            throw new NullPointerException(NULL_KEY_EXCEPTION_TEXT);
+        }
+        if (!SharedPreferencesHelper.contains(context, key)) {
+            SharedPreferencesHelper.putLong(context, key, value);
+        }
+    }
+
+    /**
      * Wrapper around {@link android.content.SharedPreferences.Editor} {@code putString()} methods.
      *
      * @param context
@@ -288,6 +379,60 @@ public final class SharedPreferencesHelper {
         SharedPreferences.Editor editor = getPreferences(context).edit();
         editor.putString(key, value);
         editor.apply();
+    }
+
+    /**
+     * Wrapper around {@link android.content.SharedPreferences.Editor#putString} method.
+     * Only set the value if the key does not exists in the preferences file.
+     *
+     * @param context
+     *            the context the SharedPreferences belong to
+     * @param key
+     *            the preference's key, must not be {@code null}
+     * @param value
+     *            the preference's value
+     */
+    @SuppressWarnings("unused")
+    public static void putStringDefault(final Context context, final String key, final String value) {
+        if (!SharedPreferencesHelper.contains(context, key)) {
+            SharedPreferencesHelper.putString(context, key, value);
+        }
+    }
+
+    /**
+     * Wrapper around {@link android.content.SharedPreferences.Editor#putStringSet} method.
+     *
+     * @param context
+     *            the context the SharedPreferences belong to
+     * @param key
+     *            the preference's key, must not be {@code null}
+     * @param values
+     *            the preference's value
+     */
+    public static void putStringSet(final Context context, final String key, final Set<String> values) {
+        if(key == null) {
+            throw new NullPointerException(NULL_KEY_EXCEPTION_TEXT);
+        }
+        SharedPreferences.Editor editor = getPreferences(context).edit();
+        editor.putStringSet(key, values);
+        editor.apply();
+    }
+
+    /**
+     * Wrapper around {@link android.content.SharedPreferences.Editor#putStringSet} method.
+     * Only set the value if the key does not exists in the preferences file.
+     *
+     * @param context
+     *            the context the SharedPreferences belong to
+     * @param key
+     *            the preference's key, must not be {@code null}
+     * @param values
+     *            the preference's value
+     */
+    public static void putStringSetDefault(final Context context, final String key, final Set<String> values) {
+        if (!SharedPreferencesHelper.contains(context, key)) {
+            SharedPreferencesHelper.putStringSet(context, key, values);
+        }
     }
 
     /**
