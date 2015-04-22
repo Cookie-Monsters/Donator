@@ -25,3 +25,10 @@ proguard/
 
 # Log Files
 *.log
+
+.idea/
+.DS_Store
+
+*.iml
+
+/app/libs/
