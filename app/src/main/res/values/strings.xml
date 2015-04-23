@@ -14,7 +14,7 @@
     <string name="donate_activity_button_donate">Donate</string>
     <string name="donate_activity_charity_image_description">Charity image</string>
 
-    <string name="amount_chooser_activity_headline">Donation:</string>
+    <string name="amount_chooser_activity_headline">Your donation</string>
     <string name="amount_chooser_activity_amount_hint">The Amount of your donation; eg. 10€</string>
     <string name="amount_chooser_activity_button_send_donation">send donation</string>
 
@@ -22,6 +22,8 @@
     <string name="success_activity_button_finish">Make another donation</string>
 
     <string name="settings_activity_choose_image_description">Choose an image</string>
+    <string name="settings_activity_donate_button_label">Donate Button Icon: </string>
+    <string name="settings_activity_charity_logo_label">Charity Logo: </string>
 
     <string name="error_no_permission">You have not the permission to enter the settings</string>
     <string name="error_can_not_be_empty">Can not be empty</string>

@@ -1,23 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:validation="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#fffdd6"
+    android:padding="20dp">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp">
 
-        <TextView
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/donate_activity_charity_image"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/amount_chooser_activity_headline" />
+            android:maxWidth="200dp"
+            android:maxHeight="200dp"
+            android:adjustViewBounds="true"
+            android:visibility="gone"
+            android:contentDescription="@string/donate_activity_charity_image_description" />
+
+        <de.neoklosch.android.aevidonationapp.views.CustomFontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/amount_chooser_activity_headline"
+            android:textSize="46sp"
+            app:fontFamily="KarmaBold"
+            android:layout_marginBottom="70dp" />
 
         <com.wrapp.floatlabelededittext.FloatLabeledEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="70dp">
 
             <com.andreabaccega.widget.FormEditText
                 validation:testType="numeric"
@@ -31,7 +53,7 @@
 
         <Button
             android:id="@+id/amount_chooser_activity_button_done"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/amount_chooser_activity_button_send_donation"/>
 

@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#fffdd6"
+    android:padding="20dp">
 
-    <TextView
-        android:layout_width="match_parent"
+    <de.neoklosch.android.aevidonationapp.views.CustomFontTextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/success_activity_success_message" />
+        android:text="@string/success_activity_success_message"
+        android:textSize="46sp"
+        app:fontFamily="KarmaBold"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="70dp" />
 
     <Button
         android:id="@+id/success_activity_button_finish"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
         android:text="@string/success_activity_button_finish" />
 
 </RelativeLayout>

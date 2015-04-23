@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:validation="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#fffdd6"
+    android:padding="20dp">
 
-    <TextView
+    <de.neoklosch.android.aevidonationapp.views.CustomFontTextView
+        android:id="@+id/donate_view_headline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/app_name"
-        android:id="@+id/headline"
-        android:layout_gravity="center_horizontal" />
+        android:textSize="46sp"
+        android:text="@string/action_settings"
+        app:fontFamily="KarmaBold"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp" />
 
     <com.wrapp.floatlabelededittext.FloatLabeledEditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp">
 
         <com.andreabaccega.widget.FormEditText
             validation:testType="alphaNumeric"
@@ -29,7 +36,8 @@
 
     <com.wrapp.floatlabelededittext.FloatLabeledEditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp">
 
         <com.andreabaccega.widget.FormEditText
             validation:testType="alphaNumeric"
@@ -43,10 +51,11 @@
 
     <com.wrapp.floatlabelededittext.FloatLabeledEditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp">
 
         <com.andreabaccega.widget.FormEditText
-            validation:testType="numeric"
+            validation:testType="alphaNumeric"
             validation:emptyErrorString="@string/error_wrong_default_amount"
             android:id="@+id/default_amount"
             android:layout_width="match_parent"
@@ -55,27 +64,51 @@
 
     </com.wrapp.floatlabelededittext.FloatLabeledEditText>
 
-    <ImageView
-        android:id="@+id/activity_settings_charity_image_chooser"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/image_chooser"
-        android:contentDescription="@string/settings_activity_choose_image_description"
-        android:maxHeight="200dp"
-        android:maxWidth="200dp"
-        android:adjustViewBounds="true"
-        android:layout_gravity="center_horizontal" />
+        android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/activity_settings_donate_button_image_chooser"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_activity_charity_logo_label" />
+
+        <ImageView
+            android:id="@+id/activity_settings_charity_image_chooser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/image_chooser"
+            android:contentDescription="@string/settings_activity_choose_image_description"
+            android:maxHeight="200dp"
+            android:maxWidth="200dp"
+            android:adjustViewBounds="true"
+            android:layout_marginBottom="20dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/image_chooser"
-        android:contentDescription="@string/settings_activity_choose_image_description"
-        android:maxHeight="200dp"
-        android:maxWidth="200dp"
-        android:adjustViewBounds="true"
-        android:layout_gravity="center_horizontal" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_activity_donate_button_label" />
+
+        <ImageView
+            android:id="@+id/activity_settings_donate_button_image_chooser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/image_chooser"
+            android:contentDescription="@string/settings_activity_choose_image_description"
+            android:maxHeight="200dp"
+            android:maxWidth="200dp"
+            android:adjustViewBounds="true"
+            android:layout_marginBottom="20dp"/>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/save_button"

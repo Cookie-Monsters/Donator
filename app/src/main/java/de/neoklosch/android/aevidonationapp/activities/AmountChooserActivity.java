@@ -1,15 +1,19 @@
 package de.neoklosch.android.aevidonationapp.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.aevi.payment.PaymentRequest;
 import com.aevi.payment.TransactionResult;
 import com.aevi.payment.TransactionStatus;
 
+import java.io.File;
 import java.math.BigDecimal;
 import java.util.Currency;
 
@@ -23,8 +27,21 @@ public class AmountChooserActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_amount_chooser);
 
+        ImageView charityImage = (ImageView) findViewById(R.id.donate_activity_charity_image);
+
         EditText amountValue = (EditText) findViewById(R.id.amount_chooser_activity_value);
         amountValue.setText("" + SharedPreferencesHelper.getFloat(AmountChooserActivity.this, Constants.SHARED_PREFERENCES_KEY_DEFAULT_AMOUNT, 10.0f));
+
+        String charityImagePath = SharedPreferencesHelper.getString(AmountChooserActivity.this, Constants.SHARED_PREFERENCES_KEY_CHARITY_IMAGE, "");
+
+
+        if (TextUtils.equals(charityImagePath, "")) {
+            charityImage.setVisibility(View.GONE);
+        } else {
+            File imageFile = new File(charityImagePath);
+            charityImage.setImageURI(Uri.parse(imageFile.toString()));
+            charityImage.setVisibility(View.VISIBLE);
+        }
 
         findViewById(R.id.amount_chooser_activity_button_done).setOnClickListener(new View.OnClickListener() {
             @Override
