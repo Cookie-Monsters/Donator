@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:validation="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fffdd6"
@@ -51,11 +52,20 @@
 
         </com.wrapp.floatlabelededittext.FloatLabeledEditText>
 
-        <Button
+        <info.hoang8f.widget.FButton
             android:id="@+id/amount_chooser_activity_button_done"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/amount_chooser_activity_button_send_donation"/>
+            android:text="@string/amount_chooser_activity_button_send_donation"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/white"
+            fbutton:buttonColor="#e05f5f"
+            fbutton:shadowColor="#af3838"
+            fbutton:shadowEnabled="true"
+            fbutton:shadowHeight="5dp"
+            fbutton:cornerRadius="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" />
 
     </LinearLayout>
 

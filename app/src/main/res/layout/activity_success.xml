@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fffdd6"
     android:padding="20dp">
 
     <de.neoklosch.android.aevidonationapp.views.CustomFontTextView
+        android:id="@+id/success_activity_headline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/success_activity_success_message"
@@ -15,13 +17,34 @@
         android:layout_centerInParent="true"
         android:layout_marginBottom="70dp" />
 
-    <Button
+    <ImageView
+        android:id="@+id/success_activity_charity_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="200dp"
+        android:maxHeight="200dp"
+        android:adjustViewBounds="true"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="20dp"
+        android:layout_above="@id/success_activity_headline"
+        android:contentDescription="@string/donate_activity_charity_image_description" />
+
+    <info.hoang8f.widget.FButton
         android:id="@+id/success_activity_button_finish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        android:text="@string/success_activity_button_finish" />
+        android:text="@string/success_activity_button_finish"
+        android:textColor="@android:color/white"
+        fbutton:buttonColor="#e05f5f"
+        fbutton:shadowColor="#af3838"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="5dp"
+        fbutton:cornerRadius="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" />
 
 </RelativeLayout>

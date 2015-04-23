@@ -1,12 +1,19 @@
 package de.neoklosch.android.aevidonationapp.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.ImageView;
 
+import java.io.File;
+
+import de.neoklosch.android.aevidonationapp.Constants;
 import de.neoklosch.android.aevidonationapp.R;
+import de.neoklosch.android.aevidonationapp.SharedPreferencesHelper;
 
 public class SuccessActivity extends BaseActivity {
     final Handler handler = new Handler();
@@ -28,6 +35,18 @@ public class SuccessActivity extends BaseActivity {
                 closeActivity();
             }
         });
+
+        ImageView charityImage = (ImageView) findViewById(R.id.success_activity_charity_image);
+
+        String charityImagePath = SharedPreferencesHelper.getString(SuccessActivity.this, Constants.SHARED_PREFERENCES_KEY_CHARITY_IMAGE, "");
+
+        if (TextUtils.equals(charityImagePath, "")) {
+            charityImage.setVisibility(View.GONE);
+        } else {
+            File imageFile = new File(charityImagePath);
+            charityImage.setImageURI(Uri.parse(imageFile.toString()));
+            charityImage.setVisibility(View.VISIBLE);
+        }
 
         handler.postDelayed(runnable, 20000);
     }

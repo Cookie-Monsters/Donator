@@ -34,7 +34,6 @@ public class AmountChooserActivity extends BaseActivity {
 
         String charityImagePath = SharedPreferencesHelper.getString(AmountChooserActivity.this, Constants.SHARED_PREFERENCES_KEY_CHARITY_IMAGE, "");
 
-
         if (TextUtils.equals(charityImagePath, "")) {
             charityImage.setVisibility(View.GONE);
         } else {
