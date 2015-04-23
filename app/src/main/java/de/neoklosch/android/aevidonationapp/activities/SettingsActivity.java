@@ -21,7 +21,7 @@ import de.neoklosch.android.aevidonationapp.SharedPreferencesHelper;
 
 
 public class SettingsActivity extends AppCompatActivity {
-    private String selectedImagePath;
+    private String imageChooserImagePath;
     private FormEditText charityName;
     private FormEditText description;
     private FormEditText defaultAmount;
@@ -59,7 +59,7 @@ public class SettingsActivity extends AppCompatActivity {
                     allValid = false;
                 }
 
-                if (selectedImagePath == null || TextUtils.equals(selectedImagePath, "")) {
+                if (imageChooserImagePath == null || TextUtils.equals(imageChooserImagePath, "")) {
                     imageChooser.setImageResource(R.mipmap.image_chooser_error);
                     allValid = false;
                 }
@@ -69,7 +69,7 @@ public class SettingsActivity extends AppCompatActivity {
                     SharedPreferencesHelper.putString(SettingsActivity.this, Constants.SHARED_PREFERENCES_KEY_DESCRIPTION, description.getText().toString());
                     SharedPreferencesHelper.putFloat(SettingsActivity.this, Constants.SHARED_PREFERENCES_KEY_DEFAULT_AMOUNT, defaultAmountValue);
                     SharedPreferencesHelper.putBoolean(SettingsActivity.this, Constants.SHARED_PREFERENCES_KEY_SETUP_DONE, true);
-                    SharedPreferencesHelper.putString(SettingsActivity.this, Constants.SHARED_PREFERENCES_KEY_CHARITY_IMAGE, selectedImagePath);
+                    SharedPreferencesHelper.putString(SettingsActivity.this, Constants.SHARED_PREFERENCES_KEY_CHARITY_IMAGE, imageChooserImagePath);
                     Intent mainActivityIntent = new Intent(SettingsActivity.this, MainActivity.class);
                     mainActivityIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(mainActivityIntent);
@@ -94,7 +94,7 @@ public class SettingsActivity extends AppCompatActivity {
         if (requestCode == Constants.IMAGE_CHOOSER_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 Uri selectedImageUri = data.getData();
-                selectedImagePath = getRealPathFromURI(SettingsActivity.this, selectedImageUri);
+                imageChooserImagePath = getRealPathFromURI(SettingsActivity.this, selectedImageUri);
                 imageChooser.setImageURI(selectedImageUri);
             }
         } else {
