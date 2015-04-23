@@ -55,6 +55,17 @@
 
     </com.wrapp.floatlabelededittext.FloatLabeledEditText>
 
+    <ImageView
+        android:id="@+id/activity_settings_image_chooser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/image_chooser"
+        android:contentDescription="@string/settings_activity_choose_image_description"
+        android:maxHeight="200dp"
+        android:maxWidth="200dp"
+        android:adjustViewBounds="true"
+        android:layout_gravity="center_horizontal" />
+
     <Button
         android:id="@+id/save_button"
         android:layout_width="wrap_content"

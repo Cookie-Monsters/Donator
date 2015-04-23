@@ -20,8 +20,10 @@
     <string name="success_activity_success_message">Thank You\nfor your donation</string>
     <string name="success_activity_button_finish">Make another donation</string>
 
+    <string name="settings_activity_choose_image_description">Choose an image</string>
+
     <string name="error_no_permission">You have not the permission to enter the settings</string>
     <string name="error_can_not_be_empty">Can not be empty</string>
-    <string name="error_wrong_default_amount">Can not be empty and must be at least one number</string>
+    <string name="error_wrong_default_amount">Can not be empty and must be at least one number over 0</string>
 
 </resources>
