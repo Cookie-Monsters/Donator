@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -21,11 +22,13 @@ import de.neoklosch.android.aevidonationapp.SharedPreferencesHelper;
 
 
 public class SettingsActivity extends AppCompatActivity {
-    private String imageChooserImagePath;
+    private String donateButtonImagePath;
+    private String charityImagePath;
     private FormEditText charityName;
     private FormEditText description;
     private FormEditText defaultAmount;
-    private ImageView imageChooser;
+    private ImageView charityImageChooser;
+    private ImageView donateButtonImageChooser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +38,8 @@ public class SettingsActivity extends AppCompatActivity {
         charityName = (FormEditText) findViewById(R.id.charity_name);
         description = (FormEditText) findViewById(R.id.description);
         defaultAmount = (FormEditText) findViewById(R.id.default_amount);
-        imageChooser = (ImageView) findViewById(R.id.activity_settings_image_chooser);
+        charityImageChooser = (ImageView) findViewById(R.id.activity_settings_charity_image_chooser);
+        donateButtonImageChooser = (ImageView) findViewById(R.id.activity_settings_donate_button_image_chooser);
 
         prefillValues();
 
@@ -59,17 +63,17 @@ public class SettingsActivity extends AppCompatActivity {
                     allValid = false;
                 }
 
-                if (imageChooserImagePath == null || TextUtils.equals(imageChooserImagePath, "")) {
-                    imageChooser.setImageResource(R.mipmap.image_chooser_error);
-                    allValid = false;
-                }
-
                 if (allValid) {
                     SharedPreferencesHelper.putString(SettingsActivity.this, Constants.SHARED_PREFERENCES_KEY_CHARITY_NAME, charityName.getText().toString());
                     SharedPreferencesHelper.putString(SettingsActivity.this, Constants.SHARED_PREFERENCES_KEY_DESCRIPTION, description.getText().toString());
                     SharedPreferencesHelper.putFloat(SettingsActivity.this, Constants.SHARED_PREFERENCES_KEY_DEFAULT_AMOUNT, defaultAmountValue);
                     SharedPreferencesHelper.putBoolean(SettingsActivity.this, Constants.SHARED_PREFERENCES_KEY_SETUP_DONE, true);
-                    SharedPreferencesHelper.putString(SettingsActivity.this, Constants.SHARED_PREFERENCES_KEY_CHARITY_IMAGE, imageChooserImagePath);
+                    if (charityImagePath != null && !TextUtils.equals(charityImagePath, "")) {
+                        SharedPreferencesHelper.putString(SettingsActivity.this, Constants.SHARED_PREFERENCES_KEY_CHARITY_IMAGE, charityImagePath);
+                    }
+                    if (donateButtonImagePath != null && !TextUtils.equals(donateButtonImagePath, "")) {
+                        SharedPreferencesHelper.putString(SettingsActivity.this, Constants.SHARED_PREFERENCES_KEY_DONATE_BUTTON_IMAGE, donateButtonImagePath);
+                    }
                     Intent mainActivityIntent = new Intent(SettingsActivity.this, MainActivity.class);
                     mainActivityIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(mainActivityIntent);
@@ -78,24 +82,41 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.activity_settings_image_chooser).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.activity_settings_charity_image_chooser).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent imageChooserIntent = new Intent();
                 imageChooserIntent.setType("image/*");
                 imageChooserIntent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(imageChooserIntent, "Select a Picture"), Constants.IMAGE_CHOOSER_REQUEST_CODE);
+                startActivityForResult(Intent.createChooser(imageChooserIntent, "Select a Picture"), Constants.CHARITY_IMAGE_CHOOSER_REQUEST_CODE);
+            }
+        });
+
+        findViewById(R.id.activity_settings_donate_button_image_chooser).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent imageChooserIntent = new Intent();
+                imageChooserIntent.setType("image/*");
+                imageChooserIntent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(imageChooserIntent, "Select a Picture"), Constants.DONATE_BUTTON_IMAGE_CHOOSER_REQUEST_CODE);
             }
         });
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == Constants.IMAGE_CHOOSER_REQUEST_CODE) {
+        if (requestCode == Constants.CHARITY_IMAGE_CHOOSER_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 Uri selectedImageUri = data.getData();
-                imageChooserImagePath = getRealPathFromURI(SettingsActivity.this, selectedImageUri);
-                imageChooser.setImageURI(selectedImageUri);
+                charityImagePath = getRealPathFromURI(SettingsActivity.this, selectedImageUri);
+                charityImageChooser.setImageURI(selectedImageUri);
+            }
+        } else if (requestCode == Constants.DONATE_BUTTON_IMAGE_CHOOSER_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                Uri selectedImageUri = data.getData();
+                donateButtonImagePath = getRealPathFromURI(SettingsActivity.this, selectedImageUri);
+                Log.v("MARKUS KEKE", donateButtonImagePath);
+                donateButtonImageChooser.setImageURI(selectedImageUri);
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
@@ -124,10 +145,15 @@ public class SettingsActivity extends AppCompatActivity {
         if (defaultAmountValue != 0.0f) {
             defaultAmount.setText("" + defaultAmountValue);
         }
-        String imagePath = SharedPreferencesHelper.getString(SettingsActivity.this, Constants.SHARED_PREFERENCES_KEY_CHARITY_IMAGE, "");
-        if (imagePath != null && !TextUtils.equals(imagePath, "")) {
-            File imageFile = new File(imagePath);
-            imageChooser.setImageURI(Uri.parse(imageFile.toString()));
+        charityImagePath = SharedPreferencesHelper.getString(SettingsActivity.this, Constants.SHARED_PREFERENCES_KEY_CHARITY_IMAGE, "");
+        if (charityImagePath != null && !TextUtils.equals(charityImagePath, "")) {
+            File imageFile = new File(charityImagePath);
+            charityImageChooser.setImageURI(Uri.parse(imageFile.toString()));
+        }
+        donateButtonImagePath = SharedPreferencesHelper.getString(SettingsActivity.this, Constants.SHARED_PREFERENCES_KEY_DONATE_BUTTON_IMAGE, "");
+        if (donateButtonImagePath != null && !TextUtils.equals(donateButtonImagePath, "")) {
+            File imageFile = new File(donateButtonImagePath);
+            donateButtonImageChooser.setImageURI(Uri.parse(imageFile.toString()));
         }
     }
 }
