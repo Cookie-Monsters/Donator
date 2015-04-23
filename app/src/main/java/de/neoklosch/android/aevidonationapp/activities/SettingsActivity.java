@@ -1,5 +1,6 @@
 package de.neoklosch.android.aevidonationapp.activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -11,7 +12,10 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.aevi.authentication.AuthenticationRequest;
+import com.aevi.authentication.Role;
 import com.andreabaccega.widget.FormEditText;
 
 import java.io.File;
@@ -34,6 +38,8 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        startAuthenticationRequest();
 
         charityName = (FormEditText) findViewById(R.id.charity_name);
         description = (FormEditText) findViewById(R.id.description);
@@ -118,9 +124,19 @@ public class SettingsActivity extends AppCompatActivity {
                 Log.v("MARKUS KEKE", donateButtonImagePath);
                 donateButtonImageChooser.setImageURI(selectedImageUri);
             }
+        } else if (requestCode == Constants.AUTHENTICATION_REQUEST_CODE) {
+            if (resultCode != Activity.RESULT_OK) {
+                if (SharedPreferencesHelper.getBoolean(this, Constants.SHARED_PREFERENCES_KEY_SETUP_DONE, false)) {
+                    finish();
+                }
+            }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    public void startAuthenticationRequest() {
+        startActivityForResult(new AuthenticationRequest(Role.MANAGER, Role.TECHNICIAN).createIntent(), Constants.AUTHENTICATION_REQUEST_CODE);
     }
 
     public String getRealPathFromURI(Context context, Uri contentUri) {

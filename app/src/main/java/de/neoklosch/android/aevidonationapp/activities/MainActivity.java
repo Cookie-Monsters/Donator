@@ -20,6 +20,7 @@ import java.io.File;
 import de.neoklosch.android.aevidonationapp.Constants;
 import de.neoklosch.android.aevidonationapp.R;
 import de.neoklosch.android.aevidonationapp.SharedPreferencesHelper;
+import de.neoklosch.android.aevidonationapp.views.CustomFontTextView;
 
 
 public class MainActivity extends BaseActivity {
@@ -29,10 +30,10 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView headline = (TextView) findViewById(R.id.donate_view_headline);
-        TextView description = (TextView) findViewById(R.id.donate_view_description);
+        CustomFontTextView headline = (CustomFontTextView) findViewById(R.id.donate_view_headline);
+        CustomFontTextView description = (CustomFontTextView) findViewById(R.id.donate_view_description);
         ImageView charityImage = (ImageView) findViewById(R.id.donate_activity_charity_image);
-        Button donateButton = (Button) findViewById(R.id.donate_activity_button_donate);
+        CustomFontTextView donateButton = (CustomFontTextView) findViewById(R.id.donate_activity_button_donate);
 
         headline.setText(SharedPreferencesHelper.getString(MainActivity.this, Constants.SHARED_PREFERENCES_KEY_CHARITY_NAME, getString(R.string.charity_name_default)));
         description.setText(SharedPreferencesHelper.getString(MainActivity.this, Constants.SHARED_PREFERENCES_KEY_DESCRIPTION, getString(R.string.charity_description_default)));
@@ -59,6 +60,14 @@ public class MainActivity extends BaseActivity {
             public void onClick(View view) {
                 Intent amountChooserIntent = new Intent(MainActivity.this, AmountChooserActivity.class);
                 startActivity(amountChooserIntent);
+            }
+        });
+
+        findViewById(R.id.donate_activity_settings).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent settingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(settingsIntent);
             }
         });
 

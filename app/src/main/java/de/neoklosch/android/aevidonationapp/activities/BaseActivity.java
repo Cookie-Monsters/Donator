@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.aevi.authentication.AuthenticationRequest;
@@ -21,30 +23,26 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (!SharedPreferencesHelper.getBoolean(this, Constants.SHARED_PREFERENCES_KEY_SETUP_DONE, false)) {
-            startAuthenticationRequest();
-        }
-    }
-
-    public void startAuthenticationRequest() {
-        startActivityForResult(new AuthenticationRequest(Role.MANAGER, Role.TECHNICIAN).createIntent(), Constants.AUTHENTICATION_REQUEST_CODE);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == Constants.AUTHENTICATION_REQUEST_CODE) {
-            if (resultCode != Activity.RESULT_OK) {
-                if (!SharedPreferencesHelper.getBoolean(this, Constants.SHARED_PREFERENCES_KEY_SETUP_DONE, false)) {
-                    finish();
-                } else {
-                    Toast.makeText(BaseActivity.this, getString(R.string.error_no_permission), Toast.LENGTH_SHORT).show();
-                }
-                return;
-            }
-
             Intent settingsActivityIntent = new Intent(BaseActivity.this, SettingsActivity.class);
             settingsActivityIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(settingsActivityIntent);
             finish();
         }
     }
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+//        ImageView imageView = new ImageView(BaseActivity.this);
+//        imageView.setImageDrawable(BaseActivity.this.getResources().getDrawable(R.mipmap.settings));
+//        imageView.setAdjustViewBounds(true);
+//        imageView.setMaxHeight(20);
+//        imageView.setMaxWidth(20);
+//        imageView.setPadding(5, 5, 5, 5);
+//
+//        FrameLayout rootLayout = (FrameLayout) findViewById(android.R.id.content);
+//        rootLayout.addView(imageView);
+    }
+
+
 }

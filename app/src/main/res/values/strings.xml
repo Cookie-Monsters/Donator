@@ -11,7 +11,7 @@
     <string name="charity_default_amount">default amount for the donations, eg: 10€</string>
     <string name="charity_settings_save_button">save</string>
 
-    <string name="donate_activity_button_donate">donate</string>
+    <string name="donate_activity_button_donate">Donate</string>
     <string name="donate_activity_charity_image_description">Charity image</string>
 
     <string name="amount_chooser_activity_headline">Donation:</string>
