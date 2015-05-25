@@ -52,7 +52,7 @@ public class MainActivity extends BaseActivity {
             donateButton.setBackgroundResource(R.drawable.default_donate_button);
         } else {
             File imageFile = new File(donateButtonImagePath);
-            donateButton.setBackground(Drawable.createFromPath(imageFile.getAbsolutePath()));
+            donateButton.setBackgroundDrawable(Drawable.createFromPath(imageFile.getAbsolutePath()));
         }
 
         findViewById(R.id.donate_activity_button_donate).setOnClickListener(new View.OnClickListener() {
